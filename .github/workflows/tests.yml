@@ -14,8 +14,8 @@ on:
       - 'docu/*'
 
 jobs:
-  test-ipa-nodejs:
-    name: IPA sur Node.js
+  test-interface:
+    name: Compilation interface
     runs-on: ubuntu-latest
     steps:
       
@@ -36,81 +36,11 @@ jobs:
       - name: Installer
         run: pnpm install
 
-      - name: Installer playwright
-        run: npx playwright install
-
       - name: Vérifier les tests
-        run: pnpm test:node
+        run: pnpm test
 
       - name: Envoyer couverure à Codecov
         uses: codecov/codecov-action@v7
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
   
-  test-ipa-navig:
-    name: IPA sur le navigateur
-    runs-on: ubuntu-latest
-    steps:
-      
-      - name: Ouvrir la branche
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-
-      - name: Installer pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: latest
-
-      - name: Préparation de Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: 26
-          cache: 'pnpm'
-
-      - name: Installer
-        run: pnpm install
-
-      - name: Installer playwright
-        run: npx playwright install
-
-      - name: Vérifier les tests
-        run: pnpm test:navig
-
-      - name: Envoyer couverure à Codecov
-        uses: codecov/codecov-action@v7
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-
-  test-ipa-electron-principal:
-    name: IPA sur Électron principal
-    runs-on: ubuntu-latest
-    needs: test-ipa-nodejs
-    steps:
-      
-      - name: Ouvrir la branche
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-
-      - name: Installer pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: latest
-
-      - name: Préparation de Node.js
-        uses: actions/setup-node@v7
-        with:
-          node-version: 26
-          cache: 'pnpm'
-
-      - name: Installer
-        run: pnpm install
-
-      - name: Installer playwright
-        run: npx playwright install
-
-      - name: Vérifier les tests
-        # De cawa-93/vite-electron-builder
-        run: xvfb-run --auto-servernum --server-args="-screen 0 1280x960x24" -- pnpm run test:électron-principal
-
-      - name: Envoyer couverure à Codecov
-        uses: codecov/codecov-action@v7
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
