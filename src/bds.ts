@@ -1,3 +1,4 @@
+import type { WorkBook, BookType } from "@e965/xlsx";
 import type { BaseÉpingleFavoris, DispositifsÉpingle } from "./favoris.ts";
 import type { Métadonnées, StatutDonnées } from "./objets.ts";
 import type {
@@ -86,3 +87,14 @@ export interface ScoreBd {
   licence?: number;
   total: number;
 }
+
+// Données
+export type DonnéesFichierBdExportées = {
+  docu: WorkBook;
+  documentsMédias: Set<string>;
+  nomFichier: string;
+};
+
+export const conversionsTypes: { [key: string]: BookType } = {
+  xls: "biff8",
+};
