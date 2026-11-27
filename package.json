@@ -15,7 +15,7 @@
     "./nuées": "./dist/nuées.js",
     "./objets": "./dist/objets.js",
     "./projets": "./dist/projets.js",
-    "./rechercher": "./dist/rechercher.js",
+    "./recherche": "./dist/recherche.js",
     "./règles": "./dist/règles.js",
     "./tableaux": "./dist/tableaux.js",
     "./variables": "./dist/variables.js",
