@@ -1,5 +1,4 @@
-
-import type { Oublier, Suivi } from "./fonctions.js";
+import type { Oublier, Suivi } from "./utils.ts";
 
 export interface InfoRésultatTexte {
   type: "texte";
@@ -42,3 +41,7 @@ export type SuivreQualitéRecherche = (args: {
   idObjet: string;
   f: Suivi<number>;
 }) => Promise<Oublier>;
+
+export type SuiviRecherche<T extends InfoRésultat> = (
+  résultat?: RésultatObjectifRecherche<T>,
+) => Promise<void> | void;

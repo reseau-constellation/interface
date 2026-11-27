@@ -1,0 +1,4 @@
+allowBuilds:
+  bun: false
+  deno: false
+  esbuild: true
