@@ -1,5 +1,6 @@
 import type { ÉpingleBd } from "./bds.ts";
 import type { BaseÉpingleFavoris } from "./favoris.ts";
+import type { InfoAuteur } from "./objets.ts";
 import type {
   DifférenceTableaux,
   DonnéesRangéeTableauAvecId,
@@ -72,6 +73,7 @@ export type FiltresDonnées = {
 export type DonnéesRangéeNuée = {
   idBd: string;
   données: DonnéesRangéeTableauAvecId;
+  auteurs: InfoAuteur[];
 };
 
 export type DonnéesTableauNuéeExportées = {
